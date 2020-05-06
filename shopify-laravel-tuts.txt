@@ -1,0 +1,108 @@
+~~**Shopify x Laravel Mix tuts**~~
+
+Legend: 
+* = Steps/action with what code to use, 
+$ = code for terminal don't include '$' type in everything without the '$' in the terminal, 
+!() =  important note.
+!(Most of these will only make sense if you followed the tutorial on this playlist: https://www.youtube.com/playlist?list=PLB4AdipoHpxbTycAd8VriLJoROLb3hYmh)
+!(You can start at episode 21)
+
+***CLONE GUIDE*****
+!(This guide is if you don't want to create from scratch and only wants to clone the repo to your local)
+!(config.yml is blank, you need to add the details)
+
+*1. Install npm to download node_modules:
+$ npm install
+
+*2. Run npm dev to test:
+$ npm run dev
+
+!(If for some reason you get errors because of missing depencies e.g. tailwindcss, vue, laravel-mix, etc. You can follow some steps below in installing the depencies)
+!(steps: *3, *6, *7)
+!(NO NEED TO FOLLOW CONFIGURATION CONTENT PASTING IF YOU JUST CLONED THE REPO. THEY ALREADY EXIST JUST FOLLOW THE STEP NUMBERS MENTIONED.)
+
+
+
+***FROM BASE GUIDE*****
+!(Follow this if you want to build shopifyxlaravel-mix from scratch)
+
+*1. Install npm first!!:
+$ npm install
+
+*2. Initialize npm/package.json:
+$ npm init -y
+
+*3. Install Laravel Mix
+$ npm install laravel-mix --save-dev
+
+*4. Create new file and name it 'webpack.mix.js' and paste these contents:
+
+const mix = require('laravel-mix');
+
+mix.js('src/javascript/app.js', 'assets') //--> first argument is the source file of your js. Second arguement is the output path after development build (Remove me once copy-pasted)
+   .sass('src/style/app.scss', 'assets') //--> first argument is the source file of your scss. Second arguement is the output path after development build (Remove me once copy-pasted)
+   .options({
+     processCssUrls: false,
+     postCss: [ tailwindcss('tailwind.config.js') ],
+   })
+   .setPublicPath('assets');
+
+*5. update package.json scripts with:
+"scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+},
+
+*6. Install tailwindcss and tailwind config:
+$ npm install tailwindcss
+$ npx tailwindcss init // --> This installs a 'tailwind.config.js'
+!(install this first because on step *4 you used a mix needing tailwindcss installed, if you run npm run dev it will cause an error because tailwindcss does not yet exist)
+
+*7. Run npm run dev to test if laravel-mix is working:
+$ npm run dev
+!(if it works and you followed this step by step it should say that you need to install vue-compiler and will install it automatically).
+
+
+
+***EXTRA NOTES*****
+~ If somehow you get errors in your terminal do these:
+- Delete 'node_modules' folder, 'package.json', 'package-lock.json'
+- Run: $ npm cache clear --force
+- Run: $ npm install
+!(if the error says 'cross-env is not an internal or external command' run this after npm install):
+($ npm install cross-env)
+- Redo everything from step 1.
+
+~ If vue doesn't get installed, or there are errors with vue during run dev, you can use these commands:
+Install Vue:
+$ npm install vue-compiler --save-dev
+$ npm install --save vue
+
+~ If you did everything here and everything is working fine, but somehow didn't watch the tutorial in the link:
+- Run theme watch first and wait for it to finish initializing
+- Run npm run watch second to check for changes in your js and css/scss
+
+
+~If you want to make modules for your tailwind in app.scss:
+- import all utilities by using @import:
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+- and not
+@tailwind "base";
+@tailwind "components";
+@tailwind "utilities";
+- then import your modules:
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import './modules/_header.scss';
+!(Always put a '_' as prefix so sass can read it as a partial)
+
+
+
