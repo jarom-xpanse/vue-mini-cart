@@ -1,5 +1,10 @@
 <section data-section-id="{{ section.id }}" data-section-type="product">
 
+  <!-- Debug -->
+  <p class="border border-red-900 inline-block py-2 px-4 bg-black text-white mt-8" >Hello this is a product</p>
+
+
+  
   {%- assign current_variant = product.selected_or_first_available_variant -%}
   {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
 
