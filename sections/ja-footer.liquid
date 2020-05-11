@@ -1,0 +1,47 @@
+<footer class="bg-gray-200">
+
+    <div class="container px-16 pt-2 pb-24 mx-auto">
+
+        <div class="other overflow-hidden">
+
+            <div class="quick-links inline-block float-left w-2/5">
+                <h2 class="pb-6 font-bold text-lg">Quick links</h2>
+                <a href="#"><p>Search</p></a>
+                
+
+            </div>
+      
+              
+            <div class="subscribe inline-block float-right w-2/5">
+                <h2 class="pb-6 font-bold text-lg">Newsletter</h2>
+                <div class="flex">
+                    <input type="email"
+                name="contact[email]"
+                id="{{ formId }}-email"
+                class="input-group__field newsletter__input px-4 py-2 flex-1"
+                value="{{ form.email }}"
+                placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}">
+                <button type="submit" class="btn newsletter__submit" name="commit" id="Subscribe">
+                    <span class="newsletter__submit-text--large uppercase bg-black text-white px-4 py-2 inline-block font-bold">{{ 'general.newsletter_form.submit' | t }}</span>
+                </button>
+                </div>
+                </span>
+                </div>
+            </div>
+                    
+        </div>
+    </div>
+
+
+
+
+    <div class="pt-4 border-t border-gray-400 bg-gray-200">
+        <div class="container px-16 footer pb-16 mx-auto">
+            <div class="inline-block float-right text-gray-800">
+                <small class="site-footer__copyright-content">&copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: routes.root_url }}</small>
+                <small class="site-footer__copyright-content site-footer__copyright-content-powered-by">{{ powered_by_link }}</small>
+            </div>
+        </div>
+    </div>
+
+</footer>
