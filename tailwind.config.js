@@ -18,11 +18,6 @@ module.exports = {
         half: '50%',
         0: '0',
         '-full': '-100%'
-      },
-      colors:{
-        red: {
-          'active': '#da1214',
-        }
       }
     },
   },

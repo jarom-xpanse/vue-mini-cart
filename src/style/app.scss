@@ -1,5 +1,7 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
 
-@import './modules/_header.scss';
+@import './tailwindbuild.scss'; 
+
+// @import './sass.scss'
+// when entering production mode, uncomment line above (@import './sass/scss)
+// and remove link to sass.scss in theme.liquid
+

@@ -12626,8 +12626,8 @@ var header = new v({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\OrenjiiroIV\Desktop\Solo Den\vue_box_3\src\javascript\app.js */"./src/javascript/app.js");
-module.exports = __webpack_require__(/*! C:\Users\OrenjiiroIV\Desktop\Solo Den\vue_box_3\src\style\app.scss */"./src/style/app.scss");
+__webpack_require__(/*! C:\Users\jarom\Desktop\dev-2\vue_mini-cart\src\javascript\app.js */"./src/javascript/app.js");
+module.exports = __webpack_require__(/*! C:\Users\jarom\Desktop\dev-2\vue_mini-cart\src\style\app.scss */"./src/style/app.scss");
 
 
 /***/ })
