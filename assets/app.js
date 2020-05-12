@@ -14406,7 +14406,11 @@ window.axios = axios; // let jQuery = require('jquery');
 // javascript modules
 // require('./modules/header.js')
 
-__webpack_require__(/*! ./components/ProductForm.js */ "./src/javascript/components/ProductForm.js");
+window.onload = init;
+
+function init() {
+  __webpack_require__(/*! ./components/ProductForm.js */ "./src/javascript/components/ProductForm.js");
+}
 
 /***/ }),
 
@@ -14417,33 +14421,31 @@ __webpack_require__(/*! ./components/ProductForm.js */ "./src/javascript/compone
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var productForm = new Vue({
-  el: ".product-form",
-  data: function data() {
-    return {
-      form: {
-        // id: document.getElementById('variant_id').value ,
-        id: "",
-        quantity: 1
-      }
-    };
-  },
-  methods: {
-    testing: function testing(a) {
-      console.log('product add to cart is clicked'); // console.log(a);
+if (document.querySelector('.product-form')) {
+  var productForm = new Vue({
+    el: ".product-form",
+    data: function data() {
+      return {
+        form: {
+          id: "",
+          quantity: 1
+        }
+      };
     },
-    addToCart: function addToCart(id) {
-      this.form.id = id; // console.log(this.form);
-
-      console.log(id);
-      axios.post('/cart/add.js', this.form).then(function (response) {
-        console.log('added to cart na');
-      })["catch"](function (error) {
-        console.log(error);
-      });
+    methods: {
+      addToCart: function addToCart(id) {
+        this.form.id = id;
+        console.log(id);
+        axios.post('/cart/add.js', this.form).then(function (response) {
+          console.log('added to cart na');
+        })["catch"](function (error) {
+          console.log(error);
+        });
+      }
     }
-  }
-});
+  });
+  window.productForm = productForm;
+}
 
 /***/ }),
 

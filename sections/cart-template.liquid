@@ -3,8 +3,9 @@
     <h1 class="text-3xl font-bold">Your Cart</h1>
     <a href="{{ routes.all_products_collection_url }}"><p class="underline">Continue shopping</p></a>
   </div>
+  
 
-  <form action="/cart" method="post" novalidate class="container mx-auto border border-black">
+<form action="" method="post" novalidate class="container mx-auto border border-black">
     <table class="responsive-table w-full">
       <thead class="small--hide">
         <tr class="w-full">
@@ -44,7 +45,7 @@
                 <p>{{ item.variant.title }}</p>
               {% endunless %}
 
-              <p>{{ item.vendor }}</p>
+              {%- comment -%}<p>{{ item.vendor }}</p>{%- endcomment -%} 
 
               {%- assign property_size = item.properties | size -%}
 
@@ -62,7 +63,7 @@
                   {% endunless %}
                 {% endfor %}
               {% endif %}
-
+              <br>
               <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
                 <small>{{ 'cart.general.remove' | t }}</small>
               </a>

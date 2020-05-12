@@ -15,4 +15,8 @@ window.axios = axios;
 // javascript modules
 // require('./modules/header.js')
 
-require('./components/ProductForm.js');
+window.onload = init;
+
+function init() {
+    require('./components/ProductForm.js');
+}
